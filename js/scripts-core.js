@@ -11,13 +11,6 @@ for(i = 0; i < jimakuTextSecondary.length; i++) {
     jimakuTextSecondary[i].innerText = "　（くそ暑い）　";
 }
 
-// var jimakuForm = document.querySelector('.jimaku-form');
-// var formToggle = document.querySelector('.form-toggle');
-// formToggle.addEventListener("click", function() {
-//     jimakuForm.classList.toggle('is-open');
-//     this.classList.toggle('is-open');
-// });
-
 // 画像をローカルから挿入する関数
 function jimakuImageInsert(evt) {
     var files = evt.target.files; // FileList object
