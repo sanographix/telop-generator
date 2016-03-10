@@ -142,10 +142,24 @@ h3 {
         position: absolute;
         right: .5em;
         bottom: .3em;
-        font-size: 11px;
-        color: #fff;
-        opacity: .85;
+        font-size: 12px;
+        opacity: .9;
+        color: #000;
         display: inline-block;
+        font-weight: bold;
+        @media #{$mq-sm} {
+            font-size: 11px;
+        }
+    }
+    .jimaku-copyright-text {
+        z-index: 3;
+    }
+    .jimaku-copyright-inner {
+        position: absolute;
+        top: -1px;
+        z-index: 2;
+        color: #fff;
+        font-weight: normal;
     }
     .telop {
         position: absolute;
