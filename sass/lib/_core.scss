@@ -1,0 +1,477 @@
+// Common
+body {
+    font-family: 'Helvetica', 'Arial', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', sans-serif;
+    background-color: $bg;
+    font-size: 90%;
+}
+a {
+    color: $link;
+    transition: all .2s;
+    &:hover {
+        color: $hover;
+    }
+}
+h1,h2,h3,h4,h5,h6 {
+    line-height: 1.2;
+    margin: .5em 0;
+    a,a:hover {
+        text-decoration: none;
+    }
+}
+.notice {
+    font-size: 85%;
+    color: $light;
+    margin: .5em;
+    &.center {
+        text-align: center;
+    }
+}
+// グロバへ
+.l-globalheader {
+    background-color: $red;
+    color: #fff;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    h1 {
+        margin: 0 0 3px;
+        font-size: 150%;
+        color: $red;
+        transform: scale(1,1.2);
+        letter-spacing: -.1em;
+        text-shadow:
+        -1px -2px #fff,
+        1px -2px #fff,
+        -2px -1px #fff,
+        2px -1px #fff,
+        -2px 1px #fff,
+        2px 1px #fff,
+        -1px 2px #fff,
+        1px 2px #fff;
+        .bigger {
+            display: inline-block;
+            transform: scale(1,1.2);
+        }
+    }
+    p {
+        margin: 0;
+    }
+}
+
+// セクション
+.l-section {
+    margin: 2em 0;
+}
+
+h2 {
+    background-color: $link;
+    color: $link;
+    font-size: 180%;
+    padding: .3em;
+    margin: 1em 0 .5em;
+    transform: scale(1,1.1);
+    letter-spacing: -.1em;
+    text-shadow:
+        -1px -2px #fff,
+        1px -2px #fff,
+        -2px -1px #fff,
+        2px -1px #fff,
+        -2px 1px #fff,
+        2px 1px #fff,
+        -1px 2px #fff,
+        1px 2px #fff;
+    .bigger {
+        display: inline-block;
+        transform: scale(1,1.4);
+    }
+}
+h3 {
+    color: $link;
+    font-size: 140%;
+    margin: 1em 0 .5em;
+    transform: scale(1,1);
+    letter-spacing: -.05em;
+    @media #{$mq-sm} {
+        padding: 0 10px;
+    }
+    .bigger {
+        display: inline-block;
+        transform: scale(1,1.4);
+    }
+}
+
+// プレビュー
+.l-preview {
+    background-color: $orange;
+    max-width: 728px;
+    padding: 10px 0;
+    margin: 1em auto;
+    position: relative;
+    h3 {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 5px;
+        color: $link;
+        background-color: $orange;
+        font-size: 90%;
+    }
+}
+
+// プレビューの画像
+.jimaku-content {
+    width: 700px;
+    height: 450px;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    @media #{$mq-sm} {
+        width: 100%;
+        height: 350px;
+    }
+    @media #{$mq-xs} {
+        width: 100%;
+        height: 220px;
+    }
+    .jimaku-copyright {
+        position: absolute;
+        right: .5em;
+        bottom: .3em;
+        font-size: 11px;
+        color: #fff;
+        opacity: .85;
+        display: inline-block;
+    }
+    .telop {
+        position: absolute;
+        bottom: 2em;
+        text-align: center;
+        width: 100%;
+        @media #{$mq-sm} {
+            bottom: 1em;
+        }
+    }
+    .jimaku-outer {
+        position: relative;
+        display: block;
+        text-align: center;
+        word-break: break-all;
+    }
+    .jimaku {
+        font-size: 400%;
+        color: red;
+        font-weight: bold;
+        line-height: 1;
+        letter-spacing: -.1em;
+        display: block;
+        @media #{$mq-sm} {
+            font-size: 300%;
+        }
+        @media #{$mq-xs} {
+            font-size: 200%;
+        }
+        &.jimaku-main {
+            position: relative;
+            z-index: 2;
+        }
+    }
+    .jimaku-shadow {
+        color: #fff;
+        position: absolute;
+        display: block;
+        width: 100%;
+        z-index: 1;
+    }
+    .shadow-top {
+        top: -3px;
+        left: 0px;
+        @media #{$mq-sm} {
+            top: -2px;
+            left: 0px;
+        }
+    }
+    // 右上
+    .shadow-top-right {
+        top: -3px;
+        left: 3px;
+        @media #{$mq-sm} {
+            top: -2px;
+            left: 2px;
+        }
+    }
+    .shadow-right {
+        top: 0px;
+        left: 3px;
+        @media #{$mq-sm} {
+            top: 0px;
+            left: 2px;
+        }
+    }
+    // 右下
+    .shadow-right-bottom {
+        top: 3px;
+        left: 3px;
+        @media #{$mq-sm} {
+            top: 2px;
+            left: 2px;
+        }
+    }
+    .shadow-bottom {
+        top: 3px;
+        left: 0px;
+        @media #{$mq-sm} {
+            top: 2px;
+            left: 0px;
+        }
+    }
+    // 左下
+    .shadow-bottom-left {
+        top: 3px;
+        left: -3px;
+        @media #{$mq-sm} {
+            top: 2px;
+            left: -2px;
+        }
+    }
+    .shadow-left {
+        top: 0px;
+        left: -3px;
+        @media #{$mq-sm} {
+            top: 0px;
+            left: -3px;
+        }
+    }
+    // 左上
+    .shadow-left-top {
+        top: -3px;
+        left: -3px;
+        @media #{$mq-sm} {
+            top: -2px;
+            left: -2px;
+        }
+    }
+    .jimaku-text {
+        display: inline-block;
+        transform: scale( 1, 1.4 );
+        transform-origin: left bottom;
+        padding-top: .4em;
+    }
+    .is-bigger {
+        display: inline-block;
+        transform: scale( 1, 2 );
+        transform-origin: left bottom;
+        margin-left: -.05em;
+        &.jimaku-text-secondary {
+            padding-top: 1.5em;
+        }
+    }
+}
+
+// ×ボタン（使ってない
+.form-toggle {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    position: relative;
+}
+.form-toggle-inner {
+    background-color: #000;
+    height: 3px;
+    position: absolute;
+    top: 11px;
+    width: 25px;
+}
+.form-toggle-inner-top {
+    position: absolute;
+    top: 0;
+    width: 25px;
+    height: 3px;
+    background-color: #000;
+    transition: all .2s;
+}
+.form-toggle-inner-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 25px;
+    height: 3px;
+    background-color: #000;
+    transition: all .2s;
+}
+.is-open .form-toggle-inner {
+    display: none;
+}
+.is-open .form-toggle-inner-top {
+    transform: rotate(45deg);
+    top: 10px;
+}
+.is-open .form-toggle-inner-bottom {
+    transform: rotate(-45deg);
+    top: 10px;
+}
+
+// テロップ編集フォーム
+.jimaku-form-section {
+    background-color: $bg-light;
+    padding: 1.5em;
+    @media #{$mq-sm} {
+        padding: .7em;
+    }
+}
+// 画像を挿入
+.jimaku-form-section-image-input {
+    text-align: right;
+}
+.input-jimaku-outer {
+    display: table;
+    width: 100%;
+    &:first-child {
+        margin-bottom: .5em;
+    }
+    > div {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        padding: .2em;
+    }
+    .input-jimaku-label {
+        font-size: 80%;
+        font-weight: bold;
+        color: $link;
+    }
+}
+.jimaku-image-input-outer {
+    position: relative;
+    text-align: center;
+    font-weight: bold;
+    border-radius: .5em;
+    border: 4px dotted $link;
+    color: $link;
+    padding: .5em;
+    font-size: 130%;
+    &:hover {
+        color: $hover;
+        border-color: $hover;
+    }
+}
+#jimaku-image-input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    text-align: left;
+    opacity: 0;
+    z-index: 5;
+    height: 40px;
+    width: 100%;
+    cursor: pointer;
+}
+.input-jimaku-checkbox {
+    input {
+        display: none;
+        margin: 0;
+    }
+    label {
+        display: inline-block;
+        box-sizing: border-box;
+        cursor: pointer;
+        background-color: $link;
+        color: #fff;
+        padding: .7em .2em;
+        width: 100%;
+        font-weight: bold;
+        border-radius: .4em;
+        box-shadow: 0 .4em 0 $hover;
+        @media #{$mq-sm} {
+            font-size: 90%;
+            min-width: 50px;
+        }
+    }
+    input:checked + label {
+        background-color: $hover;
+        box-shadow: 0 -.4em 0 darken($hover,10%);
+        position: relative;
+        top: .4em;
+    }
+}
+input {
+    outline: none;
+}
+input[type="text"],
+textarea {
+    box-sizing: border-box;
+    border: 3px solid $link;
+    background-color: #fff;
+    border-radius: .3em;
+    margin: 0;
+    padding: 8px;
+    font-size: 180%;
+    font-weight: bold;
+    width: 100%;
+    @media #{$mq-sm} {
+        font-size: 130%;
+    }
+}
+textarea {
+    font-weight: normal;
+    font-size: 110%;
+    border: 2px solid $border;
+    height: 4em;
+    @media #{$mq-sm} {
+        height: 6em;
+    }
+}
+
+// 完成したあと
+#jimaku-download {
+    display: none;
+    border: 2px solid $link;
+    padding: 0 7px 7px;
+    margin: 1em auto;
+    background-color: #fff;
+    &.is-active {
+        display: block;
+    }
+    h2 {
+        margin: 2px -7px .5em;
+    }
+    h3 {
+        padding: 0;
+    }
+}
+.jimaku-ss {
+    width: 100%;
+}
+
+// ツイッターのタイムライン
+.l-twitter-timeline {
+    text-align: center;
+}
+.twitter-timeline {
+    @media #{$mq-sm} {
+        max-width: 80% !important;
+    }
+}
+
+// footer
+.footer {
+    margin-top: 1.5em;
+    background-color: $orange;
+    padding: 1em;
+    text-align: center;
+    h4 {
+        font-size: 16px;
+        color: $link;
+    }
+    aside {
+        font-size: 75%;
+    }
+    p {
+        margin: .4em 0;
+    }
+}
