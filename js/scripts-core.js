@@ -6,9 +6,11 @@ var jimakuTextSecondary = document.querySelectorAll('.js-jimaku-text-secondary')
 // 最初にテロップに入れておく文言
 for (i = 0; i < jimakuText.length; i++) {
     jimakuText[i].innerText = "　ファッキン ホット　";
+    jimakuText[i].textContent = "　ファッキン ホット　";
 }
 for(i = 0; i < jimakuTextSecondary.length; i++) {
     jimakuTextSecondary[i].innerText = "　（くそ暑い）　";
+    jimakuTextSecondary[i].textContent = "　（くそ暑い）　";
 }
 
 // 画像をローカルから挿入する関数
@@ -18,6 +20,7 @@ function jimakuImageInsert(evt) {
     for (var i = 0, f; f = files[i]; i++) {
         // Only process image files.
         if (!f.type.match('image.*')) {
+            console.log("画像以外が添付されている");
             continue;
         }
         var reader = new FileReader();
@@ -59,11 +62,13 @@ bgRandomBtn.addEventListener("click", function() {
 document.getElementById('inputJimaku').addEventListener('input', function() {
     for (i = 0; i < jimakuText.length; i++) {
         jimakuText[i].innerText = document.jimakuForm.inputJimaku.value;
+        jimakuText[i].textContent = document.jimakuForm.inputJimaku.value;
     }
 });
 document.getElementById('inputJimakuSecondary').addEventListener('input', function() {
     for (i = 0; i < jimakuTextSecondary.length; i++) {
         jimakuTextSecondary[i].innerText = document.jimakuForm.inputJimakuSecondary.value;
+        jimakuTextSecondary[i].textContent = document.jimakuForm.inputJimakuSecondary.value;
     }
 });
 
@@ -95,14 +100,6 @@ document.getElementById('Checkbox2').addEventListener('change', function() {
 
 // 画像をcanvasで生成する
 document.getElementById("btn").addEventListener("click", function() {
-    // 字幕と文字のフチ部分に対してinputで指定した文言を挿入する
-    for (i = 0; i < jimakuText.length; i++) {
-        jimakuText[i].innerText = document.jimakuForm.inputJimaku.value;
-    }
-    for(i = 0; i < jimakuTextSecondary.length; i++) {
-        jimakuTextSecondary[i].innerText = document.jimakuForm.inputJimakuSecondary.value;
-    }
-
     // 画像ダウンロードする欄を表示する
     var jimakuDownload = document.getElementById("jimaku-download");
     jimakuDownload.classList.add('is-active');
