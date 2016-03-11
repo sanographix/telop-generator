@@ -147,19 +147,24 @@ h3 {
         color: #000;
         display: inline-block;
         font-weight: bold;
+        width: 100px;
+        height: 20px;
         @media #{$mq-sm} {
             font-size: 11px;
         }
     }
-    .jimaku-copyright-text {
-        z-index: 3;
+    .jimaku-copyright-shadow {
+        position: absolute;
+        top: 1px;
+        right: -1px;
+        z-index: 2;
     }
     .jimaku-copyright-inner {
         position: absolute;
-        top: -1px;
-        z-index: 2;
+        top: 0px;
+        right: 0px;
+        z-index: 3;
         color: #fff;
-        font-weight: normal;
     }
     .telop {
         position: absolute;
