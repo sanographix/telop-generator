@@ -41,7 +41,7 @@ function jimakuImageInsert(evt) {
                 // 新たに方向を表すclassを追加する
                 jimakuBackground.classList.add("orientation-"+orientation);
 
-                document.getElementById('jimaku-content').style.backgroundImage= 'url(' + data + ')';
+                document.getElementById('jimaku-content-background').style.backgroundImage= 'url(' + data + ')';
             };
         })(f);
         // Read in the image file as a data URL.
