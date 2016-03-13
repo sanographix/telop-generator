@@ -1,3 +1,9 @@
+/*!
+https://github.com/sanographix/telop-generator
+Licensed under MIT license
+https://github.com/sanographix/telop-generator/blob/gh-pages/LICENSE.md
+*/
+
 // フレーズ1のテロップ
 var jimakuText = document.querySelectorAll('.js-jimaku-text');
 // フレーズ2のテロップ

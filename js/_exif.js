@@ -1,4 +1,4 @@
-/*
+/*!
 exif.js
 https://github.com/exif-js/exif-js
 LICENSE: https://github.com/exif-js/exif-js/blob/master/LICENSE.md
