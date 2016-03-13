@@ -72,17 +72,7 @@ function jimakuImageInsert(evt) {
         reader.onload = (function(theFile) {
             return function(e) {
                 var data = e.target.result;
-                // JPEGの場合には、EXIFからOrientation（回転）情報を取得
-                if (data.split(',')[0].match('jpeg')) {
-                    orientation = getOrientation(data);
-                }
-                // JPEG以外や、JPEGでもEXIFが無い場合などには、標準の値に設定
-                orientation = orientation || 1;
-                console.log("画像の向きは" + orientation);
-                // 既に方向を表すclassが含まれていたら消す（3番目にくるclassを消す）
-                jimakuBackground.classList.remove(jimakuBackground.classList[2]);
-                // 新たに方向を表すclassを追加する
-                jimakuBackground.classList.add("orientation-"+orientation);
+
 
                 document.getElementById('jimaku-content-background').style.backgroundImage= 'url(' + data + ')';
             };
@@ -93,6 +83,21 @@ function jimakuImageInsert(evt) {
 }
 // 画像を挿入したらjimakuImageInsertを実行する
 document.getElementById('jimaku-image-input').addEventListener('change', jimakuImageInsert, false);
+
+document.getElementById('jimaku-image-input').addEventListener('change', function(e) {
+    EXIF.getData(e.target.files[0], function() {
+        var orientaion = EXIF.getTag(this, "Orientation");
+        // 画像の向きが定義されてなかったら1にする
+        if (orientaion == null) {
+          orientaion = 1;
+        }
+        console.log("画像の向きは" + orientaion);
+        // 既に方向を表すclassが含まれていたら消す（3番目にくるclassを消す）
+        jimakuBackground.classList.remove(jimakuBackground.classList[2]);
+        // 既に方向を表すclassが含まれていたら消す（3番目にくるclassを消す）
+        jimakuBackground.classList.add("orientation-" + orientaion);
+    });
+});
 
 // サンプル画像から画像をランダムで挿入
 var bgRandomBtn = document.getElementById('bg-random-btn');
