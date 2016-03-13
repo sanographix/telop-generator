@@ -52,6 +52,10 @@ h1,h2,h3,h4,h5,h6 {
             display: inline-block;
             transform: scale(1,1.2);
         }
+        .more-smaller {
+            display: inline-block;
+            font-size: 70%;
+        }
     }
     p {
         margin: 0;
@@ -124,10 +128,8 @@ h3 {
 .jimaku-content {
     width: 700px;
     height: 450px;
+    background-color: $light;
     margin: auto;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
     position: relative;
     overflow: hidden;
     @media #{$mq-sm} {
@@ -138,17 +140,47 @@ h3 {
         width: 100%;
         height: 220px;
     }
+    .jimaku-content-background {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        z-index: 1;
+    }
     .jimaku-copyright {
         position: absolute;
+        z-index: 2;
         right: .5em;
         bottom: .3em;
-        font-size: 11px;
-        color: #fff;
-        opacity: .85;
+        font-size: 12px;
+        opacity: .9;
+        color: #000;
         display: inline-block;
+        font-weight: bold;
+        width: 100px;
+        height: 20px;
+        @media #{$mq-sm} {
+            font-size: 11px;
+        }
+    }
+    .jimaku-copyright-shadow {
+        position: absolute;
+        top: 1px;
+        right: -1px;
+        z-index: 2;
+    }
+    .jimaku-copyright-inner {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        z-index: 3;
+        color: #fff;
     }
     .telop {
         position: absolute;
+        z-index: 3;
         bottom: 2em;
         text-align: center;
         width: 100%;
@@ -270,6 +302,17 @@ h3 {
             padding-top: 1.5em;
         }
     }
+}
+
+// EXIF情報を見て画像を正しい向きへ回転させる
+.orientation-3 {
+    transform: rotate(180deg);
+}
+.orientation-6 {
+    transform: rotate(90deg);
+}
+.orientation-8 {
+    transform: rotate(270deg);
 }
 
 // ×ボタン（使ってない
@@ -446,6 +489,9 @@ textarea {
 }
 .jimaku-ss {
     width: 100%;
+    display: block;
+    min-height: 30px;
+    background: url('../../images/loading.gif') no-repeat center;
 }
 
 // ツイッターのタイムライン

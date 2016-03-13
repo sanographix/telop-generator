@@ -3,7 +3,6 @@ var sass = require('gulp-sass');
 var pleeease = require('gulp-pleeease');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var imagemin = require('gulp-imagemin');
 var browserSync = require('browser-sync');
 var reload      = browserSync.reload;
 var plumber = require("gulp-plumber");
@@ -32,15 +31,6 @@ gulp.task('js', function() {
         .pipe(reload({stream:true}));
 });
 
-// Imagemin
-
-gulp.task('imagemin', function() {
-    gulp.src(['images/*.{jpg,gif,svg}'])
-        .pipe(imagemin({optimizationLevel: 7}))
-        .pipe(gulp.dest('build/images'));
-});
-
-
 // Static server
 
 gulp.task('browser-sync', function() {
@@ -63,6 +53,5 @@ gulp.task('bs-reload', function () {
 gulp.task('default',['browser-sync'], function() {
     gulp.watch('sass/**/*.scss',['sass']);
     gulp.watch('js/*.js',['js']);
-    gulp.watch('images/*.{jpg,gif,svg}',['imagemin']);
     gulp.watch("./*.html", ['bs-reload']);
 });

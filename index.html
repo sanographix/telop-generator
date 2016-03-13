@@ -3,24 +3,24 @@
 <head>
 
   <meta charset="utf-8">
-  <title>テロップ作成君</title>
+  <title>テロップ作成君 - 画像にテロップをつけて遊ぼう｜SANOGRAPHIX</title>
 
   <meta name="viewport" content="width=device-width">
 
-  <meta property="og:title" content="テロップ作成君" />
+  <meta property="og:title" content="テロップ作成君 - 画像にテロップをつけて遊ぼう｜SANOGRAPHIX" />
   <meta property="og:description" content="画像にテロップをつけて遊べるサービスです" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="http://sanographix.github.io/telop-generator/" />
-  <meta property="og:image" content="http://sanographix.github.io/telop-generator/build/images/og-image.jpg" />
-  <meta property="og:site_name" content="テロップ作成君" />
+  <meta property="og:image" content="http://sanographix.github.io/telop-generator/images/og-image.jpg" />
+  <meta property="og:site_name" content="テロップ作成君 - 画像にテロップをつけて遊ぼう｜SANOGRAPHIX" />
 
   <meta property="fb:app_id" content="547137951989818" />
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@sanographix">
-  <meta name="twitter:image:src" content="http://sanographix.github.io/telop-generator/build/images/og-image.jpg">
+  <meta name="twitter:image:src" content="http://sanographix.github.io/telop-generator/images/og-image.jpg">
 
   <link rel="stylesheet" href="build/css/style.css" />
-  <link rel="shortcut icon" href="build/images/favicon.ico" />
+  <link rel="shortcut icon" href="images/favicon.ico" />
   <link rel="canonical" href="http://sanographix.github.io/telop-generator/" />
 
   <!--[if lt IE 9]>
@@ -59,16 +59,19 @@
 
   <header class="l-globalheader">
     <div class="l-container">
-    <h1><span class="smaller">テロップ</span><span class="bigger">作成君</span></h1>
+    <h1><span class="smaller">テロップ</span><span class="bigger">作成君</span><span class="more-smaller">ベータ</span></h1>
       <p>画像にテロップをつけて遊ぼう</p>
     </div>
   </header>
   <div class="l-preview">
     <h3>プレビュー</h3>
-    <div class="jimaku-content" id="jimaku-content" style="
-      background-image: url('images/DSC_3.jpg');
-    ">
-      <span class="jimaku-copyright">テロップ作成君</span>
+    <div class="jimaku-content" id="jimaku-content">
+      <div class="jimaku-content-background js-jimaku-content-background" id="jimaku-content-background" style="
+      background-image: url('images/DSC_3.jpg');"></div>
+      <span class="jimaku-copyright">
+        <span class="jimaku-copyright-shadow">テロップ作成君</span>
+        <span class="jimaku-copyright-inner">テロップ作成君</span>
+      </span>
       <div class="telop">
         <span class="jimaku-outer">
           <span class="jimaku jimaku-main">
@@ -157,17 +160,17 @@
           <div class="jimaku-form-section">
             <input id="btn" type="button" value="画像を作成" class="btn btn-large btn-primary">
             <p class="notice center">※どこかにアップロードされたりしません</p>
-
+            <p class="notice center">ヒント: スマホでは画面を横位置にしてからボタンを押すと少し大きく作成できるぞ</p>
             <div id="jimaku-download">
               <h2>完成したぜ！ ツイートしよう！</h2>
               <p>OAuthでツイートみたいな粋な機能は無いので手動でツイートしてくれ！</p>
               <h3>STEP1: 画像を保存</h3>
-              <p class="notice">画像を右クリック（スマホでは長押し）で保存</p>
+              <p class="notice">画像を右クリック（スマホでは長押し）で保存。（※URLをコピーすると大変なことになるのでやらないでね）</p>
               <img src="" id="ss" class="jimaku-ss">
               <h3>STEP2: 文言をコピー</h3>
-              <textarea rows="2" class="textarea" onfocus="this.select();" readonly="">テロップ作成君でテロップを作ってみたよ。 #テロップ作成君 http://sanographix.github.io/telop-generator/ </textarea>
-              <h3>STEP3: Twitterに画像とテキストを添付して投稿</h3>
-              <p>これで完了だ！</p>
+              <textarea rows="2" class="textarea" id="jimaku-textarea" onfocus="this.select();" readonly="">テロップ作成君でテロップを作ってみたよ。 #テロップ作成君 http://sanographix.github.io/telop-generator/ </textarea>
+              <h3>STEP3: Twitterに「画像」と「文言」を添付して投稿</h3>
+              <p>これで完了だ！<br>引き続き、色々な画像や文言を組み合わせて最強のおもしろ画像を作ってくれ！</p>
             </div>
 
           </div>
@@ -179,13 +182,13 @@
       <h3>作例</h3>
       <div class="l-row">
         <div class="l-span4">
-          <img src="images/sample2.png">
+          <img src="images/sample2.jpg">
         </div>
         <div class="l-span4">
-          <img src="images/sample1.png">
+          <img src="images/sample1.jpg">
         </div>
         <div class="l-span4">
-          <img src="images/sample3.png">
+          <img src="images/sample3.jpg">
         </div>
       </div>
       <h3>みんなのテロップ</h3>
@@ -201,7 +204,7 @@
       <h4><a href="/">テロップ作成君</a></h4>
       <p>作った人: <a href="https://twitter.com/sanographix">@sanographix</a></p>
       <aside>
-        習作として作ったサイトなので環境によってはまともに動きません。<br>
+        環境によっては動かないかもしれません。<br>
         本サービスを利用したことに対するいかなる損失、被害、損害について、管理者は責任を負いません。
       </aside>
     </div>
