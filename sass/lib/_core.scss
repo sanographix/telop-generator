@@ -489,6 +489,9 @@ textarea {
 }
 .jimaku-ss {
     width: 100%;
+    display: block;
+    min-height: 30px;
+    background: url('../../images/loading.gif') no-repeat center;
 }
 
 // ツイッターのタイムライン
