@@ -27,7 +27,21 @@ function jimakuImageInsert(evt) {
         // Closure to capture the file information.
         reader.onload = (function(theFile) {
             return function(e) {
-                document.getElementById('jimaku-content').style.backgroundImage= 'url(' + e.target.result + ')';
+                var data = e.target.result;
+                // JPEGの場合には、EXIFからOrientation（回転）情報を取得
+                if (data.split(',')[0].match('jpeg')) {
+                    orientation = getOrientation(data);
+                }
+                // JPEG以外や、JPEGでもEXIFが無い場合などには、標準の値に設定
+                orientation = orientation || 1;
+                console.log("画像の向きは" + orientation);
+                var jimakuBackground = document.querySelector('.js-jimaku-content-background');
+                // 既に方向を表すclassが含まれていたら消す（3番目にくるclassを消す）
+                jimakuBackground.classList.remove(jimakuBackground.classList[2]);
+                // 新たに方向を表すclassを追加する
+                jimakuBackground.classList.add("orientation-"+orientation);
+
+                document.getElementById('jimaku-content').style.backgroundImage= 'url(' + data + ')';
             };
         })(f);
         // Read in the image file as a data URL.
@@ -111,3 +125,45 @@ document.getElementById("btn").addEventListener("click", function() {
         }
     });
 });
+
+
+// 画像の向きを取得する
+function getOrientation(imgDataURL){
+    var byteString = atob(imgDataURL.split(',')[1]);
+    var orientaion = byteStringToOrientation(byteString);
+    return orientaion;
+
+    function byteStringToOrientation(img){
+        var head = 0;
+        var orientation;
+        while (1){
+            if (img.charCodeAt(head) == 255 & img.charCodeAt(head + 1) == 218) {break;}
+            if (img.charCodeAt(head) == 255 & img.charCodeAt(head + 1) == 216) {
+                head += 2;
+            }
+            else {
+                var length = img.charCodeAt(head + 2) * 256 + img.charCodeAt(head + 3);
+                var endPoint = head + length + 2;
+                if (img.charCodeAt(head) == 255 & img.charCodeAt(head + 1) == 225) {
+                    var segment = img.slice(head, endPoint);
+                    var bigEndian = segment.charCodeAt(10) == 77;
+                    if (bigEndian) {
+                        var count = segment.charCodeAt(18) * 256 + segment.charCodeAt(19);
+                    } else {
+                        var count = segment.charCodeAt(18) + segment.charCodeAt(19) * 256;
+                    }
+                    for (i=0;i<count;i++){
+                        var field = segment.slice(20 + 12 * i, 32 + 12 * i);
+                        if ((bigEndian && field.charCodeAt(1) == 18) || (!bigEndian && field.charCodeAt(0) == 18)) {
+                            orientation = bigEndian ? field.charCodeAt(9) : field.charCodeAt(8);
+                        }
+                    }
+                    break;
+                }
+                head = endPoint;
+            }
+            if (head > img.length){break;}
+        }
+        return orientation;
+    }
+}

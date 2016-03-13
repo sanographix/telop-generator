@@ -126,9 +126,6 @@ h3 {
     height: 450px;
     background-color: $light;
     margin: auto;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
     position: relative;
     overflow: hidden;
     @media #{$mq-sm} {
@@ -138,6 +135,13 @@ h3 {
     @media #{$mq-xs} {
         width: 100%;
         height: 220px;
+    }
+    .jimaku-content-background {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
     }
     .jimaku-copyright {
         position: absolute;
@@ -290,6 +294,17 @@ h3 {
             padding-top: 1.5em;
         }
     }
+}
+
+// EXIF情報を見て画像を正しい向きへ回転させる
+.orientation-3 {
+    transform: rotate(180deg);
+}
+.orientation-6 {
+    transform: rotate(90deg);
+}
+.orientation-8 {
+    transform: rotate(270deg);
 }
 
 // ×ボタン（使ってない
