@@ -1,44 +1,3 @@
-// 画像の向きを取得する
-function getOrientation(imgDataURL){
-    var byteString = atob(imgDataURL.split(',')[1]);
-    var orientaion = byteStringToOrientation(byteString);
-    return orientaion;
-
-    function byteStringToOrientation(img){
-        var head = 0;
-        var orientation;
-        while (1){
-            if (img.charCodeAt(head) == 255 & img.charCodeAt(head + 1) == 218) {break;}
-            if (img.charCodeAt(head) == 255 & img.charCodeAt(head + 1) == 216) {
-                head += 2;
-            }
-            else {
-                var length = img.charCodeAt(head + 2) * 256 + img.charCodeAt(head + 3);
-                var endPoint = head + length + 2;
-                if (img.charCodeAt(head) == 255 & img.charCodeAt(head + 1) == 225) {
-                    var segment = img.slice(head, endPoint);
-                    var bigEndian = segment.charCodeAt(10) == 77;
-                    if (bigEndian) {
-                        var count = segment.charCodeAt(18) * 256 + segment.charCodeAt(19);
-                    } else {
-                        var count = segment.charCodeAt(18) + segment.charCodeAt(19) * 256;
-                    }
-                    for (i=0;i<count;i++){
-                        var field = segment.slice(20 + 12 * i, 32 + 12 * i);
-                        if ((bigEndian && field.charCodeAt(1) == 18) || (!bigEndian && field.charCodeAt(0) == 18)) {
-                            orientation = bigEndian ? field.charCodeAt(9) : field.charCodeAt(8);
-                        }
-                    }
-                    break;
-                }
-                head = endPoint;
-            }
-            if (head > img.length){break;}
-        }
-        return orientation;
-    }
-}
-
 // フレーズ1のテロップ
 var jimakuText = document.querySelectorAll('.js-jimaku-text');
 // フレーズ2のテロップ
@@ -72,9 +31,7 @@ function jimakuImageInsert(evt) {
         reader.onload = (function(theFile) {
             return function(e) {
                 var data = e.target.result;
-
-
-                document.getElementById('jimaku-content-background').style.backgroundImage= 'url(' + data + ')';
+                jimakuBackground.style.backgroundImage= 'url(' + data + ')';
             };
         })(f);
         // Read in the image file as a data URL.
@@ -102,6 +59,9 @@ document.getElementById('jimaku-image-input').addEventListener('change', functio
 // サンプル画像から画像をランダムで挿入
 var bgRandomBtn = document.getElementById('bg-random-btn');
 bgRandomBtn.addEventListener("click", function() {
+    // 既に方向を表すclassが含まれていたら消す（3番目にくるclassを消す）
+    jimakuBackground.classList.remove(jimakuBackground.classList[2]);
+    // 画像リスト
     var bgList = [
         "images/DSC_1.jpg",
         "images/DSC_2.jpg",
@@ -117,7 +77,7 @@ bgRandomBtn.addEventListener("click", function() {
     ];
     var result = Math.floor(Math.random() * bgList.length);
     var bgRandom = bgList[result];
-    document.getElementById('jimaku-content').style.backgroundImage='url(' + bgRandom + ')';
+    jimakuBackground.style.backgroundImage='url(' + bgRandom + ')';
 });
 
 // フレーズ1と2になにか入力されたときにプレビュー画面のテキストを置き換える

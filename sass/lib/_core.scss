@@ -52,6 +52,10 @@ h1,h2,h3,h4,h5,h6 {
             display: inline-block;
             transform: scale(1,1.2);
         }
+        .more-smaller {
+            display: inline-block;
+            font-size: 70%;
+        }
     }
     p {
         margin: 0;
