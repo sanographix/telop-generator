@@ -4,7 +4,7 @@ var jimakuText = document.querySelectorAll('.js-jimaku-text');
 var jimakuTextSecondary = document.querySelectorAll('.js-jimaku-text-secondary');
 // 背景画像
 var jimakuBackground = document.querySelector('.js-jimaku-content-background');
-
+var jimakuTextarea = document.getElementById("jimaku-textarea");
 
 // 最初にテロップに入れておく文言
 for (i = 0; i < jimakuText.length; i++) {
@@ -132,4 +132,7 @@ document.getElementById("btn").addEventListener("click", function() {
             document.getElementById("ss").src = canvas.toDataURL("image/png");
         }
     });
+    // ツイート用の文言を置き換える
+    jimakuTextarea.innerText = "「" + document.jimakuForm.inputJimaku.value + document.jimakuForm.inputJimakuSecondary.value + "」 #テロップ作成君 http://sanographix.github.io/telop-generator/ ";
+    jimakuTextarea.textContent = "「" + document.jimakuForm.inputJimaku.value + document.jimakuForm.inputJimakuSecondary.value + "」 #テロップ作成君 http://sanographix.github.io/telop-generator/ ";
 });
